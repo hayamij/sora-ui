@@ -18,6 +18,9 @@ export default async function Page(props: PageProps<"/docs/[[...slug]]">) {
     notFound();
   }
 
+  const pageTier = page.data.tier ?? "free";
+  console.log(pageTier);
+
   const MDX = page.data.body;
 
   return (
