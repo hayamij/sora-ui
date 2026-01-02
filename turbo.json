@@ -9,7 +9,14 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": ["DATABASE_URL", "SKIP_DB_GENERATE"]
+    },
+    "db:generate": {
+      "cache": false,
+      "inputs": ["src/**/*.ts", "drizzle.config.ts", ".env*"],
+      "outputs": ["drizzle/**"],
+      "env": ["DATABASE_URL", "SKIP_DB_GENERATE"]
     },
     "lint": {
       "dependsOn": ["^lint"]
@@ -19,7 +26,8 @@
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dependsOn": ["^db:generate"]
     }
   }
 }
