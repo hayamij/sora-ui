@@ -19,7 +19,7 @@ export async function GET(
   return new ImageResponse(
     <DefaultImage
       description={page.data.description}
-      site="Sora UI"
+      site="My App"
       title={page.data.title}
     />,
     {
