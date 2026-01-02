@@ -1,7 +1,6 @@
 import { assertValue } from "@workspace/utils";
 import "dotenv/config";
-//todo: change to postgres later
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/neon-http";
 
 const databaseUrl = assertValue(
   process.env.DATABASE_URL,
