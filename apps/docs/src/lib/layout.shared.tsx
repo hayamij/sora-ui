@@ -76,7 +76,7 @@ export const linkItems: LinkItemType[] = [
     on: "nav",
     children: (
       <Link
-        className="flex items-center gap-2 rounded-md p-2 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
+        className="flex items-center gap-1.5 rounded-md p-1.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
         href="/login"
       >
         <UserCircle2 className="h-5 w-5" />
