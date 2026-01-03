@@ -1,4 +1,10 @@
 import { db } from "@workspace/database";
+import {
+  account,
+  session,
+  user,
+  verification,
+} from "@workspace/database/db/schema";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { lastLoginMethod, openAPI } from "better-auth/plugins";
@@ -9,6 +15,12 @@ export const auth = betterAuth({
   database: isAuthEnabled
     ? drizzleAdapter(db, {
         provider: "pg",
+        schema: {
+          user,
+          session,
+          account,
+          verification,
+        },
       })
     : undefined,
   emailAndPassword: {
@@ -16,14 +28,17 @@ export const auth = betterAuth({
   },
   socialProviders: {
     github: {
+      enabled: true,
       clientId: process.env.GITHUB_CLIENT_ID as string,
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
     google: {
+      enabled: true,
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
     discord: {
+      enabled: true,
       clientId: process.env.DISCORD_CLIENT_ID as string,
       clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
     },

@@ -3,6 +3,7 @@ import "./global.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
+import { ClientProvider } from "@/lib/client-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,8 +19,10 @@ export default function Layout({ children }: LayoutProps<"/">) {
     <html className={inter.className} lang="en" suppressHydrationWarning>
       <body className="flex min-h-screen flex-col">
         <RootProvider>
-          <Toaster />
-          {children}
+          <ClientProvider>
+            <Toaster />
+            {children}
+          </ClientProvider>
         </RootProvider>
       </body>
     </html>

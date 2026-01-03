@@ -25,8 +25,8 @@ export const linkItems: LinkItemType[] = [
         icon: <ComponentIcon />,
       },
       {
-        text: "Login",
-        url: "/login",
+        text: "Sign In",
+        url: "/auth/sign-in",
         icon: <UserCircle2 />,
       },
     ],
@@ -82,7 +82,7 @@ export const linkItems: LinkItemType[] = [
     children: (
       <Link
         className="flex items-center gap-1.5 rounded-md p-0.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
-        href="/login"
+        href="/auth/sign-in"
       >
         <UserCircle2 className="h-6 w-6" />
       </Link>
