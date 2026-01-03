@@ -24,6 +24,11 @@ export const linkItems: LinkItemType[] = [
         url: "/docs/ui/components",
         icon: <ComponentIcon />,
       },
+      {
+        text: "Login",
+        url: "/login",
+        icon: <UserCircle2 />,
+      },
     ],
   },
   {
@@ -76,10 +81,10 @@ export const linkItems: LinkItemType[] = [
     on: "nav",
     children: (
       <Link
-        className="flex items-center gap-1.5 rounded-md p-1.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
+        className="flex items-center gap-1.5 rounded-md p-0.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
         href="/login"
       >
-        <UserCircle2 className="h-5 w-5" />
+        <UserCircle2 className="h-6 w-6" />
       </Link>
     ),
     secondary: true,
