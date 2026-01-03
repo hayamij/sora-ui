@@ -11,7 +11,7 @@ export async function proxy(_request: NextRequest) {
   // This is the recommended approach to optimistically redirect users
   // We recommend handling auth checks in each page/route
   if (!session) {
-    return NextResponse.redirect(new URL("/login", _request.url));
+    return NextResponse.redirect(new URL("/auth/sign-in", _request.url));
   }
 
   return NextResponse.next();
@@ -19,5 +19,5 @@ export async function proxy(_request: NextRequest) {
 
 export const config = {
   // Specify the routes the middleware applies to
-  matcher: ["/profile/:path*"],
+  matcher: ["/account/:path*"],
 };

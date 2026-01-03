@@ -2,8 +2,8 @@ import { RootProvider } from "fumadocs-ui/provider/next";
 import "./global.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ClientProvider } from "@/components/providers/client-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { ClientProvider } from "@/lib/client-provider";
 
 const inter = Inter({
   subsets: ["latin"],
