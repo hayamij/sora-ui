@@ -8,10 +8,12 @@ import {
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { lastLoginMethod, openAPI } from "better-auth/plugins";
+import { baseUrl } from "./metadata";
 
 export const isAuthEnabled = process.env.DATABASE_URL;
 
 export const auth = betterAuth({
+  baseURL: baseUrl.toString(),
   database: isAuthEnabled
     ? drizzleAdapter(db, {
         provider: "pg",
