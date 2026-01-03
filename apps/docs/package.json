@@ -10,6 +10,8 @@
     "postinstall": "fumadocs-mdx"
   },
   "dependencies": {
+    "@workspace/database": "workspace:*",
+    "@workspace/ui": "workspace:*",
     "better-auth": "^1.4.10",
     "fumadocs-core": "16.4.2",
     "fumadocs-mdx": "14.2.4",
@@ -18,7 +20,7 @@
     "next": "16.1.1",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "@workspace/database": "workspace:*"
+    "zod": "^4.3.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.18",

@@ -17,7 +17,10 @@
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
-      "fumadocs-mdx:collections/*": [".source/*"]
+      "fumadocs-mdx:collections/*": [".source/*"],
+      "@workspace/ui/*": ["../../packages/ui/src/*"],
+      "@workspace/utils/*": ["../../packages/utils/src/*"],
+      "@workspace/database/*": ["../../packages/database/src/*"]
     },
     "plugins": [
       {

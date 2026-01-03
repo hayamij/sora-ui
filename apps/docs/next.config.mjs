@@ -6,6 +6,7 @@ const withMDX = createMDX();
 const config = {
   reactStrictMode: true,
   reactCompiler: true,
+  transpilePackages: ["@workspace/database", "@workspace/ui"],
 };
 
 export default withMDX(config);
