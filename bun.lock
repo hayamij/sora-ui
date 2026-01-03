@@ -21,6 +21,7 @@
         "@workspace/database": "workspace:*",
         "@workspace/ui": "workspace:*",
         "better-auth": "^1.4.10",
+        "class-variance-authority": "^0.7.1",
         "fumadocs-core": "16.4.2",
         "fumadocs-mdx": "14.2.4",
         "fumadocs-ui": "16.4.2",
@@ -30,6 +31,7 @@
         "react": "^19.2.3",
         "react-dom": "^19.2.3",
         "sonner": "^2.0.7",
+        "tailwind-merge": "^3.4.0",
         "zod": "^4.3.4",
       },
       "devDependencies": {
