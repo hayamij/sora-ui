@@ -1,5 +1,7 @@
 "use client";
 
+import { Button, buttonVariants } from "@workspace/ui/components/button";
+import { cn } from "@workspace/ui/lib/utils";
 import { cva } from "class-variance-authority";
 import {
   Popover,
@@ -15,8 +17,6 @@ import {
   MessageCircleIcon,
 } from "lucide-react";
 import { useMemo, useState } from "react";
-import { cn } from "../lib/cn";
-import { buttonVariants } from "./ui/button";
 
 const cache = new Map<string, string>();
 
@@ -54,10 +54,10 @@ export function LLMCopyButton({
   });
 
   return (
-    <button
+    <Button
       className={cn(
         buttonVariants({
-          color: "secondary",
+          variant: "secondary",
           size: "sm",
           className: "gap-2 [&_svg]:size-3.5 [&_svg]:text-fd-muted-foreground",
         })
@@ -67,7 +67,7 @@ export function LLMCopyButton({
     >
       {checked ? <Check /> : <Copy />}
       Copy Markdown
-    </button>
+    </Button>
   );
 }
 
@@ -221,7 +221,7 @@ export function ViewOptions({
       <PopoverTrigger
         className={cn(
           buttonVariants({
-            color: "secondary",
+            variant: "secondary",
             size: "sm",
             className: "gap-2",
           })

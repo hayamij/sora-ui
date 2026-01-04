@@ -14,11 +14,12 @@ export function ClientProvider({ children }: { children: React.ReactNode }) {
       credentials={false}
       Link={Link}
       navigate={router.push}
+      oneTap
       onSessionChange={() => {
         router.refresh();
       }}
       replace={router.replace}
-      social={{ providers: ["github", "google", "discord"] }}
+      social={{ providers: ["google", "github"] }}
     >
       {children}
     </AuthUIProvider>

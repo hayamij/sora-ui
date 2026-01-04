@@ -7,7 +7,7 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: "https://sora-ui-docs.vercel.app",
-      images: "/banner.png",
+      images: "/og",
       siteName: "Sora UI",
       ...override.openGraph,
     },
@@ -16,7 +16,7 @@ export function createMetadata(override: Metadata): Metadata {
       creator: "@money_is_shark",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: "/banner.png",
+      images: "/og",
       ...override.twitter,
     },
   };

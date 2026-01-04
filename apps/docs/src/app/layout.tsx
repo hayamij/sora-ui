@@ -4,12 +4,14 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClientProvider } from "@/components/providers/client-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { baseUrl } from "@/lib/metadata";
 
 const inter = Inter({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  metadataBase: baseUrl,
   title: "Sora UI",
   description: "Sora UI Documentation",
   openGraph: {

@@ -7,7 +7,7 @@ import {
 } from "@workspace/database/db/schema";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { lastLoginMethod, openAPI } from "better-auth/plugins";
+import { lastLoginMethod, oneTap, openAPI } from "better-auth/plugins";
 import { baseUrl } from "./metadata";
 
 export const isAuthEnabled = process.env.DATABASE_URL;
@@ -36,14 +36,14 @@ export const auth = betterAuth({
     },
     google: {
       enabled: true,
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
-    discord: {
-      enabled: true,
-      clientId: process.env.DISCORD_CLIENT_ID as string,
-      clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-    },
+    // discord: {
+    //   enabled: true,
+    //   clientId: process.env.DISCORD_CLIENT_ID as string,
+    //   clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+    // },
   },
   account: {
     accountLinking: {
@@ -51,5 +51,5 @@ export const auth = betterAuth({
       trustedProviders: ["google", "github", "discord"],
     },
   },
-  plugins: [openAPI(), lastLoginMethod()],
+  plugins: [openAPI(), lastLoginMethod(), oneTap()],
 });
