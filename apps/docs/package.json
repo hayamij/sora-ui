@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@daveyplate/better-auth-ui": "^3.3.12",
+    "@polar-sh/better-auth": "^1.6.3",
+    "@polar-sh/sdk": "^0.42.1",
     "@workspace/database": "workspace:*",
     "@workspace/ui": "workspace:*",
     "better-auth": "^1.4.10",

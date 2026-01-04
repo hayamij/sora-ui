@@ -1,9 +1,11 @@
 import { HomeLayout } from "fumadocs-ui/layouts/home";
-import { baseOptions, linkItems } from "@/lib/layout.shared";
+import { baseOptions, getLinkItems } from "@/lib/layout.shared";
 
-export default function Layout({ children }: LayoutProps<"/">) {
+export default async function Layout({ children }: LayoutProps<"/">) {
+  const linkItems = await getLinkItems();
+
   return (
-    <HomeLayout {...baseOptions()} links={[...linkItems]}>
+    <HomeLayout {...baseOptions()} links={linkItems}>
       {children}
     </HomeLayout>
   );

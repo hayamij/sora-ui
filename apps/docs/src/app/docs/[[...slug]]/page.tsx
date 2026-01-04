@@ -9,6 +9,7 @@ import { createRelativeLink } from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LLMCopyButton, ViewOptions } from "@/components/page-actions";
+import { baseUrl, createMetadata } from "@/lib/metadata";
 import { getPageImage, source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
 
@@ -70,11 +71,29 @@ export async function generateMetadata(
     notFound();
   }
 
-  return {
+  const pageImage = getPageImage(page);
+  const ogImageUrl = new URL(pageImage.url, baseUrl).toString();
+
+  return createMetadata({
     title: page.data.title,
     description: page.data.description,
     openGraph: {
-      images: getPageImage(page).url,
+      title: page.data.title,
+      description: page.data.description,
+      url: new URL(page.url, baseUrl).toString(),
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: page.data.title,
+        },
+      ],
     },
-  };
+    twitter: {
+      title: page.data.title,
+      description: page.data.description,
+      images: [ogImageUrl],
+    },
+  });
 }

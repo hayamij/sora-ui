@@ -1,8 +1,11 @@
 import { db } from "@workspace/database";
 import {
   account,
+  accountRelations,
   session,
+  sessionRelations,
   user,
+  userRelations,
   verification,
 } from "@workspace/database/db/schema";
 import { betterAuth } from "better-auth";
@@ -22,6 +25,9 @@ export const auth = betterAuth({
           session,
           account,
           verification,
+          userRelations,
+          sessionRelations,
+          accountRelations,
         },
       })
     : undefined,
@@ -39,11 +45,6 @@ export const auth = betterAuth({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     },
-    // discord: {
-    //   enabled: true,
-    //   clientId: process.env.DISCORD_CLIENT_ID as string,
-    //   clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
-    // },
   },
   account: {
     accountLinking: {
