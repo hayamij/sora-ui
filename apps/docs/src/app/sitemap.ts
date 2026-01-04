@@ -1,8 +1,21 @@
 import type { MetadataRoute } from "next";
 import { baseUrl } from "@/lib/metadata";
+import { source } from "@/lib/source";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = (path: string): string => new URL(path, baseUrl).toString();
+  const items = await Promise.all(
+    source.getPages().map((page) => {
+      return {
+        url: url(page.url),
+        changeFrequency: "weekly",
+        lastModified: page.data.lastModified
+          ? new Date(page.data.lastModified)
+          : undefined,
+        priority: 0.5,
+      } as MetadataRoute.Sitemap[number];
+    })
+  );
 
   return [
     {
@@ -15,5 +28,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...items.filter((v) => v !== undefined),
   ];
 }
