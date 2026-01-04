@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, UserButton } from "@daveyplate/better-auth-ui";
 import {
   NavbarMenu,
   NavbarMenuContent,
@@ -23,11 +24,6 @@ export const linkItems: LinkItemType[] = [
         text: "Components",
         url: "/docs/ui/components",
         icon: <ComponentIcon />,
-      },
-      {
-        text: "Sign In",
-        url: "/auth/sign-in",
-        icon: <UserCircle2 />,
       },
     ],
   },
@@ -80,12 +76,32 @@ export const linkItems: LinkItemType[] = [
     type: "custom",
     on: "nav",
     children: (
-      <Link
-        className="flex items-center gap-1.5 rounded-md p-0.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
-        href="/auth/sign-in"
-      >
-        <UserCircle2 className="h-6 w-6" />
-      </Link>
+      <div className="flex items-center">
+        <UserButton size={"icon"} />
+      </div>
+    ),
+    secondary: true,
+  },
+  {
+    type: "custom",
+    on: "menu",
+    children: (
+      <>
+        <SignedIn>
+          {/* Maybe show a dialog when the user clicks the button instead of redirecting to the settings page */}
+          <Link href="/account/settings">
+            <UserButton size={"icon"} />
+          </Link>
+        </SignedIn>
+        <SignedOut>
+          <Link
+            className="flex items-center gap-1.5 rounded-md p-0.5 font-medium text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground"
+            href="/auth/sign-in"
+          >
+            <UserCircle2 className="h-6 w-6" />
+          </Link>
+        </SignedOut>
+      </>
     ),
     secondary: true,
   },

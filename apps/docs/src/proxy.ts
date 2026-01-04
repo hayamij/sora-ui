@@ -14,7 +14,5 @@ export default function proxy(request: NextRequest) {
     }
   }
 
-  //todo: update for auth later
-
   return NextResponse.next();
 }
