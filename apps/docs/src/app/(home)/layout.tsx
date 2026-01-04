@@ -1,14 +1,10 @@
-import { HomeLayout } from "fumadocs-ui/layouts/home";
-import { baseOptions, getLinkItems } from "@/lib/layout.shared";
+import { HomeLayoutWrapper } from "@/components/layouts/home-layout-wrapper";
+import { getLinkItems } from "@/lib/layout.shared";
 
 export const dynamic = "force-dynamic";
 
 export default async function Layout({ children }: LayoutProps<"/">) {
   const linkItems = await getLinkItems();
 
-  return (
-    <HomeLayout {...baseOptions()} links={linkItems}>
-      {children}
-    </HomeLayout>
-  );
+  return <HomeLayoutWrapper links={linkItems}>{children}</HomeLayoutWrapper>;
 }

@@ -1,4 +1,3 @@
-import { SignedIn, SignedOut, UserButton } from "@daveyplate/better-auth-ui";
 import {
   NavbarMenu,
   NavbarMenuContent,
@@ -8,6 +7,7 @@ import {
 import type { BaseLayoutProps, LinkItemType } from "fumadocs-ui/layouts/shared";
 import { Book, ComponentIcon, Pencil, Server } from "lucide-react";
 import Link from "next/link";
+import { UserButtonNav } from "@/components/user-button-nav";
 import { paths } from "@/config/paths";
 import { urls } from "@/config/urls";
 import { getProfileMenuItems } from "./menu-items";
@@ -107,24 +107,109 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
     {
       type: "custom",
       on: "nav",
-      children: (
-        <>
-          <SignedIn>
-            <div className="flex items-center">
-              <UserButton className="size-5! h-5! w-5!" size={"icon"} />
-            </div>
-          </SignedIn>
-          <SignedOut>
-            <div className="flex items-center">
-              <UserButton size={"icon"} />
-            </div>
-          </SignedOut>
-        </>
-      ),
+      children: <UserButtonNav />,
       secondary: true,
     },
   ];
 }
+
+// Static linkItems for SSG (không có auth check)
+export const linkItems: LinkItemType[] = [
+  {
+    type: "menu",
+    on: "menu",
+    text: "Documentation",
+    items: [
+      {
+        text: "Getting Started",
+        url: paths.docs.gettingStarted,
+        icon: <Book />,
+      },
+      {
+        text: "Components",
+        url: paths.docs.components,
+        icon: <ComponentIcon />,
+      },
+    ],
+  },
+  {
+    type: "custom",
+    on: "nav",
+    children: (
+      <NavbarMenu>
+        <NavbarMenuTrigger>
+          <Link href={paths.docs.root}>Documentation</Link>
+        </NavbarMenuTrigger>
+        <NavbarMenuContent>
+          <NavbarMenuLink className="md:row-span-2" href={paths.docs.root}>
+            <p className="font-medium">Getting Started</p>
+            <p className="text-fd-muted-foreground text-sm">Learn how to use</p>
+          </NavbarMenuLink>
+          <NavbarMenuLink className="lg:col-start-2" href={paths.docs.root}>
+            <ComponentIcon className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
+            <p className="font-medium">Components</p>
+            <p className="text-fd-muted-foreground text-sm">
+              See the available components.
+            </p>
+          </NavbarMenuLink>
+          <NavbarMenuLink className="cursor-not-allowed opacity-50 lg:col-start-2">
+            <Server className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
+            <p className="font-medium">Pricing</p>
+            <p className="text-fd-muted-foreground text-sm">See the pricing.</p>
+          </NavbarMenuLink>
+          <NavbarMenuLink className="cursor-not-allowed opacity-50 lg:col-start-3 lg:row-start-1">
+            <Pencil className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
+            <p className="font-medium">Comming Soon</p>
+            <p className="text-fd-muted-foreground text-sm">
+              We are working on it.
+            </p>
+          </NavbarMenuLink>
+        </NavbarMenuContent>
+      </NavbarMenu>
+    ),
+  },
+  {
+    type: "custom",
+    on: "nav",
+    children: (
+      <span className="flex cursor-not-allowed items-center gap-2 px-2 line-through opacity-50">
+        Blog
+      </span>
+    ),
+  },
+  {
+    type: "custom",
+    on: "nav",
+    children: (
+      <span className="flex cursor-not-allowed items-center gap-2 px-2 line-through opacity-50">
+        Pricing
+      </span>
+    ),
+  },
+  {
+    type: "main",
+    on: "nav",
+    text: "Account",
+    url: paths.account.settings,
+  },
+  {
+    type: "menu",
+    on: "menu",
+    text: "Account",
+    items: [
+      {
+        text: "Sign In",
+        url: paths.auth.signIn,
+      },
+    ],
+  },
+  {
+    type: "custom",
+    on: "nav",
+    children: <UserButtonNav />,
+    secondary: true,
+  },
+];
 
 export function baseOptions(): BaseLayoutProps {
   return {
