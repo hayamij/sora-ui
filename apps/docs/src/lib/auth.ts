@@ -1,3 +1,10 @@
+import {
+  checkout,
+  polar,
+  portal,
+  usage,
+  webhooks,
+} from "@polar-sh/better-auth";
 import { db } from "@workspace/database";
 import {
   account,
@@ -11,7 +18,9 @@ import {
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { lastLoginMethod, oneTap, openAPI } from "better-auth/plugins";
+import { paths } from "@/config/paths";
 import { baseUrl } from "./metadata";
+import { polarClient } from "./polar-client";
 
 export const isAuthEnabled = process.env.DATABASE_URL;
 
@@ -52,5 +61,41 @@ export const auth = betterAuth({
       trustedProviders: ["google", "github", "discord"],
     },
   },
-  plugins: [openAPI(), lastLoginMethod(), oneTap()],
+  user: {
+    deleteUser: {
+      enabled: true,
+      afterDelete: async (user, _request) => {
+        await polarClient.customers.deleteExternal({
+          externalId: user.id,
+        });
+      },
+    },
+  },
+  plugins: [
+    openAPI(),
+    lastLoginMethod(),
+    oneTap(),
+    polar({
+      client: polarClient,
+      createCustomerOnSignUp: true,
+      use: [
+        checkout({
+          products: [],
+          successUrl:
+            process.env.NEXT_PUBLIC_CHECKOUT_SUCCESS_URL ||
+            paths.success.checkout,
+          authenticatedUsersOnly: true,
+        }),
+        portal(),
+        usage(),
+        webhooks({
+          secret: process.env.POLAR_WEBHOOK_SECRET as string,
+          onPayload: (payload) => {
+            console.log(payload);
+            return Promise.resolve();
+          },
+        }),
+      ],
+    }),
+  ],
 });

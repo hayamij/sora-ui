@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { paths } from "@/config/paths";
 import { auth } from "./auth";
 
 export async function getProfileMenuItems() {
@@ -9,22 +10,29 @@ export async function getProfileMenuItems() {
 
     const items: Array<{ text: string; url: string }> = [];
 
-    // Better Auth trả về { session, user } hoặc null
     if (sessionData?.user) {
       items.push({
         text: "Profile",
-        url: "/account/settings",
+        url: paths.account.settings,
+      });
+      items.push({
+        text: "Sign Out",
+        url: paths.auth.signOut,
+      });
+    } else {
+      items.push({
+        text: "Sign In",
+        url: paths.auth.signIn,
       });
     }
 
     return items.filter(Boolean);
   } catch (error) {
     console.error("[menu-items] Error getting session:", error);
-    // Fallback: chỉ trả về Sign In
     return [
       {
         text: "Sign In",
-        url: "/auth/sign-in",
+        url: paths.auth.signIn,
       },
     ];
   }

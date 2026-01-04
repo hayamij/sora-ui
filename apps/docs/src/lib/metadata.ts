@@ -1,4 +1,6 @@
 import type { Metadata } from "next/types";
+import { paths } from "@/config/paths";
+import { urls } from "@/config/urls";
 
 export function createMetadata(override: Metadata): Metadata {
   return {
@@ -6,8 +8,8 @@ export function createMetadata(override: Metadata): Metadata {
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: "https://sora-ui-docs.vercel.app",
-      images: "/og",
+      url: urls.production,
+      images: paths.og.root,
       siteName: "Sora UI",
       ...override.openGraph,
     },
@@ -16,7 +18,7 @@ export function createMetadata(override: Metadata): Metadata {
       creator: "@money_is_shark",
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: "/og",
+      images: paths.og.root,
       ...override.twitter,
     },
   };
@@ -24,5 +26,5 @@ export function createMetadata(override: Metadata): Metadata {
 
 export const baseUrl =
   process.env.NODE_ENV === "development"
-    ? new URL("http://localhost:3000")
-    : new URL("https://sora-ui-docs.vercel.app/");
+    ? new URL(urls.development)
+    : new URL(urls.production);

@@ -8,6 +8,8 @@ import {
 import type { BaseLayoutProps, LinkItemType } from "fumadocs-ui/layouts/shared";
 import { Book, ComponentIcon, Pencil, Server } from "lucide-react";
 import Link from "next/link";
+import { paths } from "@/config/paths";
+import { urls } from "@/config/urls";
 import { getProfileMenuItems } from "./menu-items";
 
 export async function getLinkItems(): Promise<LinkItemType[]> {
@@ -21,12 +23,12 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
       items: [
         {
           text: "Getting Started",
-          url: "/docs",
+          url: paths.docs.gettingStarted,
           icon: <Book />,
         },
         {
           text: "Components",
-          url: "/docs/ui/components",
+          url: paths.docs.components,
           icon: <ComponentIcon />,
         },
       ],
@@ -37,16 +39,16 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
       children: (
         <NavbarMenu>
           <NavbarMenuTrigger>
-            <Link href="/docs">Documentation</Link>
+            <Link href={paths.docs.root}>Documentation</Link>
           </NavbarMenuTrigger>
           <NavbarMenuContent>
-            <NavbarMenuLink className="md:row-span-2" href="/docs">
+            <NavbarMenuLink className="md:row-span-2" href={paths.docs.root}>
               <p className="font-medium">Getting Started</p>
               <p className="text-fd-muted-foreground text-sm">
                 Learn how to use
               </p>
             </NavbarMenuLink>
-            <NavbarMenuLink className="lg:col-start-2" href="/docs">
+            <NavbarMenuLink className="lg:col-start-2" href={paths.docs.root}>
               <ComponentIcon className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
               <p className="font-medium">Components</p>
               <p className="text-fd-muted-foreground text-sm">
@@ -94,7 +96,7 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
       type: "main",
       on: "nav",
       text: "Account",
-      url: "/account/settings",
+      url: paths.account.settings,
     },
     {
       type: "menu",
@@ -129,6 +131,6 @@ export function baseOptions(): BaseLayoutProps {
     nav: {
       title: "Sora UI",
     },
-    githubUrl: "https://github.com/axyl1410/sora-ui",
+    githubUrl: urls.github.repo,
   };
 }

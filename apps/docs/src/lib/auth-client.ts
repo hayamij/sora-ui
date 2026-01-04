@@ -1,3 +1,4 @@
+import { polarClient } from "@polar-sh/better-auth/client";
 import {
   lastLoginMethodClient,
   oneTapClient,
@@ -24,6 +25,7 @@ export const authClient = createAuthClient({
         maxAttempts: 5, // Maximum number of attempts before triggering onPromptNotification (default: 5)
       },
     }),
+    polarClient(),
   ],
 });
 
