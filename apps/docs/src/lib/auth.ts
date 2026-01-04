@@ -63,7 +63,7 @@ export const auth = betterAuth({
   },
   user: {
     deleteUser: {
-      enabled: !!isAuthEnabled,
+      enabled: true,
       afterDelete: async (user, _request) => {
         await polarClient.customers.deleteExternal({
           externalId: user.id,
@@ -77,7 +77,7 @@ export const auth = betterAuth({
     oneTap(),
     polar({
       client: polarClient,
-      createCustomerOnSignUp: true,
+      createCustomerOnSignUp: !!isAuthEnabled,
       use: [
         checkout({
           products: [],
