@@ -29,6 +29,7 @@ export async function getProfileMenuItems() {
     return items.filter(Boolean);
   } catch (error) {
     console.error("[menu-items] Error getting session:", error);
+    // On error, default to showing Sign In
     return [
       {
         text: "Sign In",

@@ -4,12 +4,11 @@ import {
   NavbarMenuLink,
   NavbarMenuTrigger,
 } from "fumadocs-ui/layouts/home/navbar";
-import type { BaseLayoutProps, LinkItemType } from "fumadocs-ui/layouts/shared";
+import type { LinkItemType } from "fumadocs-ui/layouts/shared";
 import { Book, ComponentIcon, Pencil, Server } from "lucide-react";
 import Link from "next/link";
 import { UserButtonNav } from "@/components/user-button-nav";
 import { paths } from "@/config/paths";
-import { urls } from "@/config/urls";
 import { getProfileMenuItems } from "./menu-items";
 
 export async function getLinkItems(): Promise<LinkItemType[]> {
@@ -113,7 +112,7 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
   ];
 }
 
-// Static linkItems for SSG (không có auth check)
+// Static linkItems for SSG (no auth check)
 export const linkItems: LinkItemType[] = [
   {
     type: "menu",
@@ -202,6 +201,7 @@ export const linkItems: LinkItemType[] = [
         url: paths.auth.signIn,
       },
     ],
+    // Items will be dynamically injected by AccountMenuItems component
   },
   {
     type: "custom",
@@ -211,11 +211,4 @@ export const linkItems: LinkItemType[] = [
   },
 ];
 
-export function baseOptions(): BaseLayoutProps {
-  return {
-    nav: {
-      title: "Sora UI",
-    },
-    githubUrl: urls.github.repo,
-  };
-}
+// baseOptions has been moved to layout-options.ts to avoid importing server-only code into client components
