@@ -5,7 +5,7 @@ import { AuthUIProviderTanstack } from "@daveyplate/better-auth-ui/tanstack";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { authClient } from "../../lib/auth-client";
+import { authClient } from "@/lib/auth/auth-client";
 
 export function ClientProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();

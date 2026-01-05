@@ -1,7 +1,7 @@
 import { isMarkdownPreferred, rewritePath } from "fumadocs-core/negotiation";
 import { headers } from "next/headers";
 import { type NextRequest, NextResponse } from "next/server";
-import { auth } from "./lib/auth";
+import { auth } from "./lib/auth/auth";
 
 const { rewrite: rewriteLLM } = rewritePath(
   "/docs{/*path}",

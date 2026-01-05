@@ -4,7 +4,7 @@ import {
   oneTapClient,
 } from "better-auth/client/plugins";
 import { createAuthClient } from "better-auth/react";
-import { baseUrl } from "./metadata";
+import { baseUrl } from "../metadata";
 
 export const authClient = createAuthClient({
   baseURL: baseUrl.toString(),

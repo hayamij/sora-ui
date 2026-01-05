@@ -10,8 +10,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LLMCopyButton, ViewOptions } from "@/components/page-actions";
 import { urls } from "@/config/urls";
+import { getPageImage, source } from "@/lib/content/source";
 import { baseUrl, createMetadata } from "@/lib/metadata";
-import { getPageImage, source } from "@/lib/source";
 import { getMDXComponents } from "@/mdx-components";
 
 export default async function Page(props: PageProps<"/docs/[[...slug]]">) {

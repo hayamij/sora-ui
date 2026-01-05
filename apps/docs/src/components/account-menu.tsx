@@ -1,7 +1,7 @@
 "use client";
 
 import { paths } from "@/config/paths";
-import { useSession } from "@/lib/auth-client";
+import { useSession } from "@/lib/auth/auth-client";
 
 /**
  * Hook to get Account menu items based on session

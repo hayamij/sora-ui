@@ -1,6 +1,6 @@
 import { headers } from "next/headers";
 import { paths } from "@/config/paths";
-import { auth } from "./auth";
+import { auth } from "../auth/auth";
 
 export async function getProfileMenuItems() {
   try {

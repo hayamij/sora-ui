@@ -1,5 +1,5 @@
 import { HomeLayoutWrapper } from "@/components/layouts/home-layout-wrapper";
-import { getLinkItems } from "@/lib/layout.shared";
+import { getLinkItems } from "@/lib/layout/layout.shared";
 
 export const dynamic = "force-dynamic";
 

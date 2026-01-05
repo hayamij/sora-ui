@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
+import { source } from "@/lib/content/source";
 import { baseUrl } from "@/lib/metadata";
-import { source } from "@/lib/source";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const url = (path: string): string => new URL(path, baseUrl).toString();

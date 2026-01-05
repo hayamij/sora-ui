@@ -4,7 +4,7 @@ import { HomeLayout } from "fumadocs-ui/layouts/home";
 import type { LinkItemType } from "fumadocs-ui/layouts/shared";
 import { useMemo } from "react";
 import { useAccountMenuItems } from "@/components/account-menu";
-import { baseOptions } from "@/lib/layout-options";
+import { baseOptions } from "@/lib/layout/layout-options";
 
 interface HomeLayoutWrapperProps {
   children: React.ReactNode;
