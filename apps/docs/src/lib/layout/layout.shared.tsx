@@ -54,7 +54,7 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
                 See the available components.
               </p>
             </NavbarMenuLink>
-            <NavbarMenuLink className="cursor-not-allowed opacity-50 lg:col-start-2">
+            <NavbarMenuLink className="lg:col-start-2" href={paths.waitlist}>
               <Server className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
               <p className="font-medium">Pricing</p>
               <p className="text-fd-muted-foreground text-sm">
@@ -85,9 +85,9 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
       type: "custom",
       on: "nav",
       children: (
-        <span className="flex cursor-not-allowed items-center gap-2 px-2 line-through opacity-50">
+        <Link className="flex items-center gap-2 px-2" href={paths.waitlist}>
           Pricing
-        </span>
+        </Link>
       ),
     },
 
@@ -151,7 +151,7 @@ export const linkItems: LinkItemType[] = [
               See the available components.
             </p>
           </NavbarMenuLink>
-          <NavbarMenuLink className="cursor-not-allowed opacity-50 lg:col-start-2">
+          <NavbarMenuLink className="lg:col-start-2" href={paths.waitlist}>
             <Server className="mb-2 rounded-md bg-fd-primary p-1 text-fd-primary-foreground" />
             <p className="font-medium">Pricing</p>
             <p className="text-fd-muted-foreground text-sm">See the pricing.</p>
@@ -180,9 +180,9 @@ export const linkItems: LinkItemType[] = [
     type: "custom",
     on: "nav",
     children: (
-      <span className="flex cursor-not-allowed items-center gap-2 px-2 line-through opacity-50">
+      <Link className="flex items-center gap-2 px-2" href={paths.waitlist}>
         Pricing
-      </span>
+      </Link>
     ),
   },
   {

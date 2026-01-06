@@ -39,4 +39,7 @@ export const paths = {
   success: {
     checkout: "/success?checkout_id={CHECKOUT_ID}",
   },
+
+  // Public paths
+  waitlist: "/waitlist",
 } as const;
