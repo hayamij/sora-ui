@@ -82,15 +82,11 @@ export async function getLinkItems(): Promise<LinkItemType[]> {
       ),
     },
     {
-      type: "custom",
+      type: "main",
       on: "nav",
-      children: (
-        <Link className="flex items-center gap-2 px-2" href={paths.waitlist}>
-          Pricing
-        </Link>
-      ),
+      text: "Pricing",
+      url: paths.waitlist,
     },
-
     {
       type: "main",
       on: "nav",
@@ -177,13 +173,10 @@ export const linkItems: LinkItemType[] = [
     ),
   },
   {
-    type: "custom",
+    type: "main",
     on: "nav",
-    children: (
-      <Link className="flex items-center gap-2 px-2" href={paths.waitlist}>
-        Pricing
-      </Link>
-    ),
+    text: "Pricing",
+    url: paths.waitlist,
   },
   {
     type: "main",
