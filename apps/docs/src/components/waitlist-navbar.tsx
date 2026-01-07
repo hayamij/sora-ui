@@ -6,7 +6,7 @@ import { urls } from "@/config/urls";
 
 export function WaitlistNavbar() {
   return (
-    <nav className="fixed top-0 right-0 left-0 z-50 bg-gradient-to-b from-black/20 to-transparent">
+    <nav className="fixed top-0 right-0 left-0 z-50 bg-linear-to-b from-black/20 to-transparent">
       <div className="container mx-auto flex h-20 items-center justify-between px-4">
         {/* Logo */}
         <Link

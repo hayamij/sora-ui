@@ -19,8 +19,8 @@ import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { lastLoginMethod, oneTap, openAPI } from "better-auth/plugins";
 import { paths } from "@/config/paths";
+import { polarClient } from "../integrations/polar-client";
 import { baseUrl } from "../metadata";
-import { polarClient } from "./polar-client";
 
 export const isAuthEnabled = process.env.DATABASE_URL;
 
