@@ -6,15 +6,6 @@ import {
   webhooks,
 } from "@polar-sh/better-auth";
 import { db } from "@workspace/database";
-import {
-  account,
-  accountRelations,
-  session,
-  sessionRelations,
-  user,
-  userRelations,
-  verification,
-} from "@workspace/database/db/schema";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { lastLoginMethod, oneTap, openAPI } from "better-auth/plugins";
@@ -29,15 +20,6 @@ export const auth = betterAuth({
   database: isAuthEnabled
     ? drizzleAdapter(db, {
         provider: "pg",
-        schema: {
-          user,
-          session,
-          account,
-          verification,
-          userRelations,
-          sessionRelations,
-          accountRelations,
-        },
       })
     : undefined,
   emailAndPassword: {
