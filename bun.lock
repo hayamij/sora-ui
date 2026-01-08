@@ -46,6 +46,7 @@
         "@types/node": "^24.10.2",
         "@types/react": "^19.2.7",
         "@types/react-dom": "^19.2.3",
+        "@workspace/typescript-config": "workspace:*",
         "babel-plugin-react-compiler": "^1.0.0",
         "postcss": "^8.5.6",
         "tailwindcss": "^4.1.18",
@@ -63,9 +64,17 @@
       "devDependencies": {
         "@types/bun": "latest",
         "@types/pg": "^8.16.0",
+        "@workspace/typescript-config": "workspace:*",
         "drizzle-kit": "^0.31.8",
         "tsx": "^4.21.0",
       },
+      "peerDependencies": {
+        "typescript": "^5",
+      },
+    },
+    "packages/typescript-config": {
+      "name": "@workspace/typescript-config",
+      "version": "0.0.0",
       "peerDependencies": {
         "typescript": "^5",
       },
@@ -125,6 +134,7 @@
         "@types/node": "^22.15.3",
         "@types/react": "^19.2.7",
         "@types/react-dom": "^19.2.3",
+        "@workspace/typescript-config": "workspace:*",
         "eslint": "^9.39.1",
         "typescript": "5.9.2",
       },
@@ -133,6 +143,7 @@
       "name": "@workspace/utils",
       "version": "0.0.0",
       "devDependencies": {
+        "@workspace/typescript-config": "workspace:*",
         "typescript": "^5.9.2",
       },
     },
@@ -749,6 +760,8 @@
     "@wojtekmaj/react-recaptcha-v3": ["@wojtekmaj/react-recaptcha-v3@0.1.4", "", { "dependencies": { "warning": "^4.0.0" }, "peerDependencies": { "@types/react": "^18.0.0 || ^19.0.0", "react": "^18.0.0 || ^19.0.0", "react-dom": "^18.0.0 || ^19.0.0" }, "optionalPeers": ["@types/react"] }, "sha512-zszMOdgI+y1Dz3496pRFr3t68n9+OmX/puLQNnOBDC7WrjM+nOKGyjIMCTe+3J14KDvzcxETeiglyDMGl0Yh/Q=="],
 
     "@workspace/database": ["@workspace/database@workspace:packages/database"],
+
+    "@workspace/typescript-config": ["@workspace/typescript-config@workspace:packages/typescript-config"],
 
     "@workspace/ui": ["@workspace/ui@workspace:packages/ui"],
 

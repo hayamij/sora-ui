@@ -1,32 +1,15 @@
 {
+  "extends": "@workspace/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "react-jsx",
-    "incremental": true,
     "paths": {
       "@/*": ["./src/*"],
       "fumadocs-mdx:collections/*": [".source/*"],
       "@workspace/ui/*": ["../../packages/ui/src/*"],
       "@workspace/utils/*": ["../../packages/utils/src/*"],
       "@workspace/database/*": ["../../packages/database/src/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    }
   },
   "include": [
     "next-env.d.ts",
